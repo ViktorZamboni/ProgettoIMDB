@@ -1,0 +1,75 @@
+<!-- carousel.component.html -->
+<div id="moviesCarousel" class="carousel slide" data-bs-ride="carousel">
+
+  <div class="carousel-indicators">
+    <button
+      *ngFor="let movie of movies; let i = index"
+      type="button"
+      [class.active]="i === 0"
+      data-bs-target="#moviesCarousel"
+      [attr.data-bs-slide-to]="i"
+    ></button>
+  </div>
+
+  <div class="carousel-inner">
+    <div
+      *ngFor="let movie of movies; let i = index"
+      class="carousel-item"
+      [class.active]="i === 0"
+    >
+      <div class="movie-slide">
+        <img
+          [src]="movie.primaryImage"
+          [alt]="movie.primaryTitle"
+          onerror="this.src='assets/images/no-image.jpg'"
+        />
+        <div class="movie-info">
+          <div class="content-wrapper">
+            <h2>{{ movie.primaryTitle }}</h2>
+            <div class="meta-info">
+              <p class="year" *ngIf="movie.startYear">
+                {{ movie.startYear }}
+              </p>
+              <p class="rating" *ngIf="movie.averageRating">
+                ⭐ {{ movie.averageRating | number:'1.1-1' }}/10
+                <span class="votes">({{ movie.numVotes | number }} votes)</span>
+              </p>
+            </div>
+            <p class="description">
+              {{ truncateText(movie.description) }}
+            </p>
+            <button class="btn btn-primary" (click)="showDetails(movie.id)">
+              View Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#moviesCarousel"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#moviesCarousel"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- Loading Indicator -->
+<div *ngIf="isLoading" class="spinner-container">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>

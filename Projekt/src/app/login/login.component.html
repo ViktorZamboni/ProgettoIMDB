@@ -1,0 +1,62 @@
+<div class="login-container">
+  <div class="login-card">
+    <form *ngIf="isLoginMode" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <h2 class="login-title">Login</h2>
+      
+      <div class="form-group">
+        <label class="input-label">Email</label>
+        <input type="email" formControlName="email" class="login-input">
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
+          Insert a valid email
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="input-label">Password</label>
+        <input type="password" formControlName="password" class="login-input">
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+          Password can't be empty (min 6 characters)
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button type="submit" [disabled]="loginForm.invalid || isLoading" class="btn login-btn">Login</button>
+        <button type="button" (click)="switchMode()" class="btn switch-btn">Create a new account</button>
+      </div>
+    </form>
+
+    <form *ngIf="!isLoginMode" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <h2 class="login-title">Register</h2>
+      
+      <div class="form-group">
+        <label class="input-label">Display Name</label>
+        <input type="text" [(ngModel)]="displayName" class="login-input" [ngModelOptions]="{standalone: true}" required>
+      </div>
+      
+      <div class="form-group">
+        <label class="input-label">Email</label>
+        <input type="email" formControlName="email" class="login-input">
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
+          Insert a valid email
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="input-label">Password</label>
+        <input type="password" formControlName="password" class="login-input">
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">
+          Password can't be empty (min 6 characters)
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button type="submit" [disabled]="registerForm.invalid || !displayName || isLoading" class="btn login-btn">Register</button>
+        <button type="button" (click)="switchMode()" class="btn switch-btn">Already have an account?</button>
+      </div>
+    </form>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

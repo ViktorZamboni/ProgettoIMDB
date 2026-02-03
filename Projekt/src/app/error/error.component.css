@@ -1,0 +1,144 @@
+/* error.component.css */
+.error-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.error-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.error-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  width: 100%;
+  padding: 3rem;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(255, 0, 0, 0.2);
+  border: 1px solid rgba(255, 0, 0, 0.1);
+  text-align: center;
+}
+
+.error-content::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.1)
+  );
+  border-radius: 1.5rem;
+  z-index: -1;
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.error-icon {
+  margin-bottom: 2rem;
+}
+
+.error-icon svg {
+  height: 80px;
+  width: 80px;
+  color: #ff0000;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: 50%;
+  padding: 15px;
+}
+
+.error-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.error-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+}
+
+.error-description {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: #ffffff;
+  color: #201f21;
+  border: 2px solid #ffffff;
+  font-size: 1.1rem;
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .error-content {
+    padding: 2rem;
+  }
+  
+  .error-title {
+    font-size: 2rem;
+  }
+  
+  .error-description {
+    font-size: 1rem;
+  }
+}

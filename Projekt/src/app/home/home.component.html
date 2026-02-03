@@ -1,0 +1,55 @@
+<div class="page-container">
+  <div class="hero-banner">
+    <div class="hero-content">
+      <h1>Welcome to MovieVerse!</h1>
+      <p class="hero-subtitle">Explore our curated collection of films, from timeless classics to the latest releases</p>
+      <div class="hero-buttons">
+        <a href = "#Browse-movies" class="btn btn-primary">Browse Movies</a>
+        <a routerLink="/aboutus" class="btn btn-outline">Learn More</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="movies-grid" id="Browse-movies">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>Top 10 Movies</h2>
+        </div>
+        <div class="grid-container">
+          <div *ngIf="isLoading" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+          <div class="movie-card" *ngFor="let movie of featuredMovies">
+            <div class="movie-poster" [style.background-image]="'url(' + movie.poster + ')'">
+              <div class="movie-overlay">
+                <div class="movie-info">
+                  <h3>{{movie.title}}</h3>
+                  <div class="movie-meta">
+                    <span class="rating"><i class="fas fa-star"></i> {{movie.rating}}</span>
+                    <span class="year">{{movie.year}}</span>
+                  </div>
+                  <div class="movie-actions">
+                    <a [routerLink]="['/movie', movie.id]" class="btn btn-primary">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="carousel-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>Most Popular Movies</h2>
+        </div>
+        <app-carousel [movies]="popularMovies"></app-carousel>
+      </div>
+    </div>
+
+  </div>
+</div>

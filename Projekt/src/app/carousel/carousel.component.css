@@ -1,0 +1,143 @@
+/* carousel.component.css */
+#moviesCarousel {
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 1000px; /* Più compatto */
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(135deg, #1a0000 0%, #000000 100%);
+}
+
+#moviesCarousel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, #e50914, #ff4b2b);
+  z-index: 10;
+}
+
+.movie-slide {
+  display: flex;
+  flex-direction: column;
+  min-height: 380px; /* Altezza ridotta */
+  position: relative;
+}
+
+.movie-slide img {
+  width: 100%;
+  height: 200px; /* Immagini più piccole */
+  object-fit: cover;
+  object-position: center;
+}
+
+.movie-info {
+  padding: 1.5rem; /* Padding ridotto */
+  background: linear-gradient(to right, rgba(20, 20, 20, 0.97), rgba(10, 10, 10, 0.99));
+  color: white;
+}
+
+.content-wrapper {
+  padding: 0;
+}
+
+.movie-info h2 {
+  font-size: 1.6rem; /* Titolo più piccolo */
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.meta-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem; /* Testo più piccolo */
+}
+
+.rating {
+  color: #ffc107;
+}
+
+.description {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  font-size: 0.95rem; /* Testo più compatto */
+  color: #e0e0e0;
+  max-height: 5.5rem; /* Altezza ridotta */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Mostra solo le prime righe */
+.description::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1.5rem;
+  background: linear-gradient(to bottom, rgba(10,10,10,0), rgba(10,10,10,0.9));
+}
+
+.movie-info .btn-primary {
+  background-color: #e50914;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem; /* Bottone più piccolo */
+  border-radius: 4px;
+  width: 100%;
+}
+
+.carousel-indicators {
+  bottom: -30px;
+}
+
+.carousel-indicators button {
+  width: 8px;
+  height: 8px;
+}
+
+@media (min-width: 768px) {
+  .movie-slide {
+    flex-direction: row;
+    min-height: 220px; /* Molto più compatto su desktop */
+  }
+  
+  .movie-slide img {
+    width: 35%;
+    height: 100%;
+  }
+  
+  .movie-info {
+    width: 65%;
+    padding: 1.2rem;
+  }
+  
+  .movie-info h2 {
+    font-size: 1.5rem;
+  }
+  
+  .description {
+    max-height: 4.5rem;
+  }
+  
+  .movie-info .btn-primary {
+    width: auto;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .movie-slide {
+    min-height: 240px;
+  }
+  
+  .movie-slide img {
+    width: 30%;
+  }
+}

@@ -1,0 +1,86 @@
+<!-- Navbar Bootstrap -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu content -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+      <!-- Search form -->
+      <form class="d-flex mx-auto mb-2 mb-lg-0 me-lg-4 position-relative" (ngSubmit)="search()">
+        <div class="input-group">
+          <input #searchInput
+                 class="form-control"
+                 type="search"
+                 [(ngModel)]="searchText"
+                 name="search"
+                 placeholder="Search movies..."
+                 aria-label="Search"
+                 (input)="onSearchInput()"
+                 (focus)="handleFocus()">
+          <button class="btn btn-outline-success" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+          
+          <!-- Search Results Dropdown -->
+          <div class="search-results-dropdown" *ngIf="showResults && searchResults.length">
+            <div *ngFor="let movie of searchResults" 
+                 class="dropdown-item" 
+                 (click)="navigateToMovie(movie.id)">
+              <div class="d-flex align-items-center">
+                <img *ngIf="movie.poster_path" 
+                     [src]="'https://image.tmdb.org/t/p/w92/' + movie.poster_path" 
+                     alt="{{ movie.title }} poster"
+                     class="me-2"
+                     style="width: 30px; height: 45px;">
+                <span>{{ movie.title }} ({{ movie.release_date | slice:0:4 }})</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!-- Navigation links -->
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link textColor" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link textColor" routerLink="/aboutus">About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link textColor" routerLink="/tv-series">TV Series</a>
+        </li>
+        <!-- Dropdown menu -->
+        <li class="nav-item dropdown" *ngIf="currentUser; else loginButton">
+          <a class="nav-link dropdown-toggle textColor" 
+             href="#" 
+             role="button"
+             data-bs-toggle="dropdown" 
+             aria-expanded="false">
+             <i class="fas fa-user-circle me-1"></i>
+             {{ currentUser.displayName || currentUser.email }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/profile"><i class="fas fa-user me-2"></i>Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" (click)="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+          </ul>
+        </li>
+        
+        <ng-template #loginButton>
+          <li class="nav-item">
+            <a class="nav-link textColor" routerLink="/login">
+              <i class="fas fa-sign-in-alt me-1"></i>Login
+            </a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</nav>

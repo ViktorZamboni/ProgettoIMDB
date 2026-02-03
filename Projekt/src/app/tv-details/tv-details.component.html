@@ -1,0 +1,123 @@
+<!-- Loading State -->
+<div class="loading-container" *ngIf="loading">
+  <div class="loading-spinner"></div>
+  <p>Loading TV show details...</p>
+</div>
+
+<!-- Error State -->
+<div class="error-container" *ngIf="error">
+  <p class="error-message">{{ error }}</p>
+  <button (click)="retryLoading()">Try Again</button>
+</div>
+
+<!-- TV Show Details -->
+<div class="tv-details" *ngIf="tvShow && !loading && !error">
+  <!-- Backdrop Image -->
+  <div class="backdrop" [style.background-image]="'url(' + tvShow.backdrop + ')'"></div>
+  <div class="overlay"></div>
+
+  <div class="content">
+    <!-- TV Show Header -->
+    <div class="tv-header">
+      <div class="poster">
+        <img [src]="tvShow.poster" [alt]="tvShow.title" />
+      </div>
+      <div class="tv-info">
+        <h1>{{ tvShow.title }} ({{ tvShow.year }})</h1>
+        <div class="meta-info">
+          <span class="rating">
+            <i class="fas fa-star"></i>
+            {{ tvShow.rating | number : "1.1-1" }}/10
+          </span>
+          <span class="seasons">
+            <i class="fas fa-tv"></i>
+            {{ tvShow.seasons }} Seasons
+          </span>
+          <span class="episodes">
+            <i class="fas fa-list"></i>
+            {{ tvShow.episodes }} Episodes
+          </span>
+          <span class="status">
+            <i class="fas fa-info-circle"></i>
+            {{ tvShow.status }}
+          </span>
+          <span class="network" *ngIf="tvShow.networks">
+            <i class="fas fa-satellite"></i>
+            {{ tvShow.networks }}
+          </span>
+        </div>
+        <div class="plot">
+          <h3>Overview</h3>
+          <p>{{ tvShow.description || "No overview available." }}</p>
+        </div>
+        <div class="credits">
+          <div class="creator" *ngIf="tvShow.creator">
+            <h3><i class="fas fa-pen"></i> Creator</h3>
+            <div class="name">{{ tvShow.creator }}</div>
+          </div>
+          <div class="cast" *ngIf="tvShow.cast">
+            <h3><i class="fas fa-users"></i> Main Cast</h3>
+            <div class="cast-list">
+              <div class="actor" *ngFor="let actor of tvShow.cast.split(', ')">
+                <span class="name">{{ actor }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trailer Section -->
+    <div class="trailer-section" *ngIf="trailerUrl">
+      <h2>Trailer</h2>
+      <div class="trailer-container">
+        <iframe [src]="trailerUrl" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="reviews-section">
+      <h2>Reviews</h2>
+      
+      <!-- Review Form -->
+      <div class="review-form" *ngIf="isLoggedIn; else loginPrompt">
+        <h3>Write a Review</h3>
+        <div class="form-group">
+          <label>Rating</label>
+          <div class="rating-input">
+            <i class="fas fa-star" *ngFor="let star of [1,2,3,4,5]"
+               [class.active]="star <= newReview.rating"
+               (click)="onRatingChange(star)"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="review">Your Review</label>
+          <textarea id="review" [(ngModel)]="newReview.content" required></textarea>
+        </div>
+        <button (click)="submitReview()">Submit Review</button>
+      </div>
+
+      <ng-template #loginPrompt>
+        <div class="login-prompt">
+          <p>You must be <a routerLink="/login">logged in</a> to write a review.</p>
+        </div>
+      </ng-template>
+
+      <!-- Reviews List -->
+      <div class="reviews-list">
+        <div class="review-card" *ngFor="let review of reviews">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <span class="username">{{review.username}}</span>
+              <div class="review-rating">
+                <i class="fas fa-star" *ngFor="let star of [].constructor(review.rating)"></i>
+              </div>
+            </div>
+<span class="review-date">{{review.date.toDate() | date:'mediumDate'}}</span>
+          </div>
+          <p class="review-content">{{review.content}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

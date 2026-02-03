@@ -1,0 +1,32 @@
+.card {
+  transition: transform 0.2s;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: 300px;
+  object-fit: cover;
+}
+
+.rating {
+  font-size: 0.9rem;
+}
+
+.fa-star {
+  margin-right: 4px;
+}
+
+h2 {
+  color: #28a745;
+  margin-bottom: 1.5rem;
+}
+
+.btn-outline-success:hover {
+  background-color: #28a745;
+  color: white;
+}
