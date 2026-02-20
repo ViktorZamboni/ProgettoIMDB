@@ -1,142 +1,142 @@
-# 🎬 Progetto IMDB
+# 🎬 IMDB Project
 
-Applicazione web sviluppata in Angular per la ricerca e visualizzazione di informazioni su film e serie TV, utilizzando l'API di TMDB (The Movie Database).
+Web application developed in Angular for searching and displaying information about movies and TV series, using the TMDB (The Movie Database) API.
 
-## 📋 Descrizione
+## 📋 Description
 
-Questo progetto è un'applicazione web moderna che permette agli utenti di:
-- 🔍 Cercare film e serie TV
-- 📺 Visualizzare dettagli completi su film e serie TV
-- ⭐ Leggere e scrivere recensioni
-- 👤 Effettuare login/registrazione tramite Firebase
-- 🎠 Navigare tra i contenuti tramite carousel
-- 📱 Interfaccia responsive grazie a Bootstrap
+This project is a modern web application that allows users to:
+- 🔍 Search for movies and TV series
+- 📺 View complete details about movies and TV series
+- ⭐ Read and write reviews
+- 👤 Login/Register via Firebase
+- 🎠 Browse content through carousels
+- 📱 Responsive interface thanks to Bootstrap
 
-## 🛠️ Tecnologie Utilizzate
+## 🛠️ Technologies Used
 
-- **Angular 20.0.1** - Framework frontend
-- **TypeScript 5.8.3** - Linguaggio di programmazione
-- **Bootstrap 5.3.3** - Framework CSS per UI responsive
-- **Firebase 11.9.0** - Autenticazione e database
-- **TMDB API** - Dati su film e serie TV
-- **FontAwesome 6.7.2** - Icone
-- **RxJS 7.8.0** - Programmazione reattiva
+- **Angular 20.0.1** - Frontend framework
+- **TypeScript 5.8.3** - Programming language
+- **Bootstrap 5.3.3** - CSS framework for responsive UI
+- **Firebase 11.9.0** - Authentication and database
+- **TMDB API** - Movie and TV series data
+- **FontAwesome 6.7.2** - Icons
+- **RxJS 7.8.0** - Reactive programming
 
-## 📦 Prerequisiti
+## 📦 Prerequisites
 
-Prima di iniziare, assicurati di avere installato:
+Before starting, make sure you have installed:
 
-- [Node.js](https://nodejs.org/en/download/) (versione LTS consigliata)
-- npm (incluso con Node.js)
+- [Node.js](https://nodejs.org/en/download/) (LTS version recommended)
+- npm (included with Node.js)
 
-## 🚀 Installazione
+## 🚀 Installation
 
-1. **Clona il repository**
+1. **Clone the repository**
    ```bash
-   git clone <url-repository>
+   git clone <repository-url>
    cd Projekt
    ```
 
-2. **Installa Angular CLI globalmente**
+2. **Install Angular CLI globally**
    ```bash
    npm install -g @angular/cli
    ```
 
-3. **Installa le dipendenze del progetto**
+3. **Install project dependencies**
    ```bash
    npm install
    ```
 
-4. **Configura le variabili d'ambiente**
-   - Crea/modifica i file di environment in `src/environments/`
-   - Aggiungi le tue credenziali Firebase e chiave API TMDB
+4. **Configure environment variables**
+   - Create/edit environment files in `src/environments/`
+   - Add your Firebase credentials and TMDB API key
 
-## 🎯 Utilizzo
+## 🎯 Usage
 
-### Avvio del server di sviluppo
+### Start development server
 
 ```bash
 npm start
 ```
-oppure
+or
 ```bash
 ng serve
 ```
 
-L'applicazione sarà disponibile su `http://localhost:4200/`
+The application will be available at `http://localhost:4200/`
 
-### Altri comandi utili
+### Other useful commands
 
-- **Build di produzione**
+- **Production build**
   ```bash
   npm run build
   ```
 
-- **Build in modalità watch**
+- **Build in watch mode**
   ```bash
   npm run watch
   ```
 
-- **Esecuzione dei test**
+- **Run tests**
   ```bash
   npm test
   ```
 
-## 📁 Struttura del Progetto
+## 📁 Project Structure
 
 ```
 src/
 ├── app/
-│   ├── aboutus/              # Pagina "Chi siamo"
-│   ├── carousel/             # Componente carousel
-│   ├── error/                # Pagina di errore
-│   ├── footer/               # Footer del sito
+│   ├── aboutus/              # About us page
+│   ├── carousel/             # Carousel component
+│   ├── error/                # Error page
+│   ├── footer/               # Site footer
 │   ├── home/                 # Homepage
-│   ├── login/                # Login/Registrazione
-│   ├── movie-details/        # Dettagli film
-│   ├── navbar/               # Barra di navigazione
-│   ├── search-results/       # Risultati ricerca
-│   ├── services/             # Servizi (API, Auth, Reviews)
-│   ├── tv-details/           # Dettagli serie TV
-│   └── tv-series/            # Lista serie TV
-├── environments/             # Configurazioni ambiente
+│   ├── login/                # Login/Registration
+│   ├── movie-details/        # Movie details
+│   ├── navbar/               # Navigation bar
+│   ├── search-results/       # Search results
+│   ├── services/             # Services (API, Auth, Reviews)
+│   ├── tv-details/           # TV series details
+│   └── tv-series/            # TV series list
+├── environments/             # Environment configurations
 └── ...
 ```
 
-## 🔧 Sviluppo
+## 🔧 Development
 
-### Creare un nuovo componente
-
-```bash
-ng generate component nome-componente --standalone
-```
-
-### Creare un nuovo servizio
+### Create a new component
 
 ```bash
-ng generate service services/nome-servizio
+ng generate component component-name --standalone
 ```
 
-## 🌟 Funzionalità Principali
+### Create a new service
 
-- **Homepage**: Visualizzazione di film e serie TV popolari in carousel
-- **Ricerca**: Sistema di ricerca avanzato per film e serie TV
-- **Dettagli**: Pagine dedicate con informazioni complete su ogni contenuto
-- **Recensioni**: Sistema di recensioni per gli utenti registrati
-- **Autenticazione**: Login e registrazione tramite Firebase
-- **Responsive Design**: Interfaccia ottimizzata per tutti i dispositivi
+```bash
+ng generate service services/service-name
+```
 
-## 👥 Autori
+## 🌟 Main Features
 
-Progetto sviluppato per il corso WIE 2024/25
+- **Homepage**: Display of popular movies and TV series in carousels
+- **Search**: Advanced search system for movies and TV series
+- **Details**: Dedicated pages with complete information about each content
+- **Reviews**: Review system for registered users
+- **Authentication**: Login and registration via Firebase
+- **Responsive Design**: Interface optimized for all devices
 
-## 📄 Licenza
+## 👥 Authors
 
-Questo è un progetto didattico.
+Project developed for the WIE 2024/25 course
 
-## 🔗 Link Utili
+## 📄 License
 
-- [Documentazione Angular](https://angular.dev)
+This is an educational project.
+
+## 🔗 Useful Links
+
+- [Angular Documentation](https://angular.dev)
 - [TMDB API Documentation](https://developer.themoviedb.org/docs)
 - [Firebase Documentation](https://firebase.google.com/docs)
 - [Bootstrap Documentation](https://getbootstrap.com/docs) 
